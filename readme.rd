@@ -39,9 +39,8 @@ A comprehensive web-based food delivery platform that allows users to order food
 - Secure payment gateway
 - Admin dashboard
 
-## 🛠️ Tech Stack
-
-### Frontend
+## Live Demo
+https://relaxed-crumble-c771ef.netlify.app/newfile.html
 - HTML5
 - CSS3
 - JavaScript (ES6+)
