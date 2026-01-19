@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Delivery Order Manager</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="header-content">
+                <h1> Online Food Delivery Order and Manager</h1>
+                <p>Efficiently manage orders and assign deliveries</p>
+            </div>
+            <div class="stats">
+                <div class="stat-box">
+                    <h3>Total Orders</h3>
+                    <div class="number" id="totalOrders">0</div>
+                </div>
+                <div class="stat-box">
+                    <h3>Unpaid Orders</h3>
+                    <div class="number" id="unpaidOrders">0</div>
+                </div>
+                <div class="stat-box">
+                    <h3>Paid Orders</h3>
+                    <div class="number" id="paidOrders">0</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="main-grid">
+            <!-- Left Column: Forms -->
+            <div>
+                <!-- Add Order Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <span class="icon">➕</span>
+                        <h2>Add New Order</h2>
+                    </div>
+                    <form id="addOrderForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Order ID</label>
+                                <input type="text" id="orderId" placeholder="ORD001" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Restaurant Name</label>
+                                <input type="text" id="restaurantName" placeholder="Pizza Palace" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Item Count</label>
+                                <input type="number" id="itemCount" placeholder="2" min="1" value="1" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Delivery Distance (KM)</label>
+                                <input type="number" id="deliveryDistance" placeholder="3.5" min="0" step="0.1" value="0" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="isPaid">
+                                <label for="isPaid">Payment Received</label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-primary">+ Add Order</button>
+                    </form>
+                </div>
+
+                <!-- Filter Card -->
+                <div class="card" style="margin-top: 25px;">
+                    <div class="card-header">
+                        <span class="icon">🔍</span>
+                        <h2>Filter Orders</h2>
+                    </div>
+                    <div class="form-group">
+                        <label>Payment Status</label>
+                        <div class="filter-buttons">
+                            <button class="filter-btn active" data-filter="all">All Orders</button>
+                            <button class="filter-btn" data-filter="paid">Paid</button>
+                            <button class="filter-btn" data-filter="unpaid">Unpaid</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="range-container">
+                            <div class="range-value">
+                                <label>Max Distance</label>
+                                <span id="distanceValue">10 km</span>
+                            </div>
+                            <input type="range" id="maxDistance" min="0" max="20" step="0.5" value="10">
+                        </div>
+                         </div>
+                </div>
+
+                <!-- Assign Delivery Card -->
+                <div class="card" style="margin-top: 25px;">
+                    <div class="card-header">
+                        <span class="icon">🚚</span>
+                        <h2>Assign Delivery</h2>
+                    </div>
+                    <div class="form-group">
+                        <div class="range-container">
+                            <div class="range-value">
+                                <label>Max Distance for Assignment</label>
+                                <span id="assignDistanceValue">5 km</span>
+                            </div>
+                            <input type="range" id="assignMaxDistance" min="0" max="20" step="0.5" value="5">
+                        </div>
+                    </div>
+                    <button class="btn-success" id="assignBtn">🎯 Assign Nearest Order</button>
+                </div>
+            </div>
+
+            <!-- Right Column: Output & Stats -->
+            <div>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="icon">📊</span>
+                        <h2>Output</h2>
+                    </div>
+                    <div class="output-panel" id="outputPanel">Waiting for action...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Orders Table -->
+        <div class="card">
+            <div class="card-header">
+                <span class="icon">📋</span>
+                <h2>All Orders</h2>
+            </div>
+            <div class="table-responsive">
+                <table id="ordersTable">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Restaurant</th>
+                            <th style="text-align: center;">Items</th>
+                            <th style="text-align: center;">Distance (km)</th>
+                            <th style="text-align: center;">Status</th>
+                            <th style="text-align: center;">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                    </tbody>
+                </table>
+            </div>
+            <div id="emptyState" class="empty-state" style="display: none;">
+                <p>No orders found. Add a new order to get started!</p>
+            </div>
+            </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
