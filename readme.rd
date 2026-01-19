@@ -40,7 +40,7 @@ A comprehensive web-based food delivery platform that allows users to order food
 - Admin dashboard
 
 ## Live Demo
-https://relaxed-crumble-c771ef.netlify.app/newfile.html
+https://peaceful-cascaron-013919.netlify.app/
 - HTML5
 - CSS3
 - JavaScript (ES6+)
